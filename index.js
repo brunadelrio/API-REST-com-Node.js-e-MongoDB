@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const Person = require('./models/Person')
 
 // forma de ler JSON / middlewares
 app.use(
