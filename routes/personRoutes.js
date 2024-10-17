@@ -3,7 +3,6 @@ const Person = require('../models/Person')
 
 router.post('/', async (req, res) => {
     // req.body
-
     // {name: "Bruna", salary: 5000, approved: false}
     const {name, salary, approved} = req.body
 
@@ -24,6 +23,16 @@ router.post('/', async (req, res) => {
     try {
         await Person.create(person)
         res.status(201).json({message: "Pessoa inserida no sistema com sucesso!"})
+    } catch (error) {
+        res.status(500).json({error: error})
+    }
+})
+
+// read
+router.get('/', async (req, res) => {
+    try {
+        const people = await Person.find()
+        res.status(201).json({people})
     } catch (error) {
         res.status(500).json({error: error})
     }
